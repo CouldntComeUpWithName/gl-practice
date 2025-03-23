@@ -1,9 +1,4 @@
-# C/C++ Project Template with CMake Build System
-A simple and flexible starting point for **C/C++** projects using the **CMake** build system. This template provides a straightforward file structure and example code to help kickstart your project.
+# The place where I practice OpenGL
+You can see some demos here:
 
-Key Features:
-* Minimalistic project structure
-* CMake-based build system
-* Basic code examples for quick customization
-
-> Note: This template is not exhaustive and may require further customization to fit your project's specific requirements.
+>Note: nothing yet
