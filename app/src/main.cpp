@@ -1,5 +1,5 @@
-#include<iostream>
-#include<binary_loader.h>
+#include <iostream>
+#include <binary_loader.h>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -28,7 +28,7 @@ int main(void)
     return -1;
   }
 
-    /* Loop until the user closes the window */
+  /* Loop until the user closes the window */
   while (!glfwWindowShouldClose(window))
   {
     /* Render here */

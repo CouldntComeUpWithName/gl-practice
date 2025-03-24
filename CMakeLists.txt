@@ -4,10 +4,10 @@ if(XCODE)
   message(FATAL_ERROR "XCODE isn't supported yet")
 endif()
 
-project( MyProject 
+project(PracticeGL 
   VERSION 0.0.0
-  DESCRIPTION "template-project"
-  LANGUAGES CXX C )
+  DESCRIPTION "OpenGL-code-examples"
+  LANGUAGES CXX C)
 
 set(CMAKE_CXX_STANDARD 20) # not the best practice, but who cares
 set(CMAKE_CXX_STANDARD_REQUIRED OFF)
