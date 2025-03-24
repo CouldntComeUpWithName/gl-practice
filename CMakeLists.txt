@@ -18,7 +18,7 @@ include(FetchContent)
 include(cmake/target.cmake)
 
 add_subdirectory(app)
-add_subdirectory(library)
+add_subdirectory(common)
 
 add_subdirectory(3rd-party)
 add_subdirectory(tools)

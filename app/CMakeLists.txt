@@ -6,7 +6,7 @@ set(SOURCES src/main.cpp)
 file(GLOB_RECURSE RESOURCES res/*)
 
 target_sources(${EXECUTABLE_NAME} PRIVATE ${SOURCES} PRIVATE ${RESOURCES})
-target_link_libraries(${EXECUTABLE_NAME} PRIVATE library)
+target_link_libraries(${EXECUTABLE_NAME} PRIVATE opengl32 PRIVATE glfw PRIVATE glm::glm PRIVATE common PRIVATE glad)
 
 if(CMAKE_CONFIGURATION_TYPES)
   set_target_properties(${EXECUTABLE_NAME} PROPERTIES 
