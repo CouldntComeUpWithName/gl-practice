@@ -7,7 +7,7 @@ target_include_directories(core PUBLIC include)
 
 target_sources(core PRIVATE ${HEADERS} PRIVATE ${SOURCES})
 
-target_link_libraries(core PRIVATE opengl32 PUBLIC glfw PUBLIC glm::glm PUBLIC glad)
+target_link_libraries(core PRIVATE opengl32 PUBLIC glfw PUBLIC glm::glm PUBLIC glad PUBLIC assimp::assimp)
 
 if(CMAKE_CONFIGURATION_TYPES)
   set_target_properties(core PROPERTIES 
