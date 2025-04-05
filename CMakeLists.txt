@@ -17,12 +17,18 @@ include(FetchContent)
 
 include(cmake/target.cmake)
 
-add_subdirectory(app)
-add_subdirectory(common)
+add_subdirectory(examples)
+add_subdirectory(core)
 
 add_subdirectory(3rd-party)
 add_subdirectory(tools)
 add_subdirectory(tests)
+
+
+file(GLOB_RECURSE RESOURCES res/*)
+add_custom_target(res SOURCES ${RESOURCES})
+
+source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/res" FILES ${RESOURCES})
 
 if(MSVC) 
   add_compile_options(/MP /W4)

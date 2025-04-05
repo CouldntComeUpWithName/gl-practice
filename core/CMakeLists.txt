@@ -1,18 +1,20 @@
-add_library(common)
+add_library(core)
 
 file(GLOB_RECURSE SOURCES src/**.cpp src/**.cc src/**.cxx)
 file(GLOB_RECURSE HEADERS include/**.h include/**.hpp include/**.inl include/**.hxx)
 
-target_include_directories(common PUBLIC include)
+target_include_directories(core PUBLIC include)
 
-target_sources(common PRIVATE ${HEADERS} PRIVATE ${SOURCES})
+target_sources(core PRIVATE ${HEADERS} PRIVATE ${SOURCES})
+
+target_link_libraries(core PRIVATE opengl32 PUBLIC glfw PUBLIC glm::glm PUBLIC glad)
 
 if(CMAKE_CONFIGURATION_TYPES)
-  set_target_properties(common PROPERTIES 
+  set_target_properties(core PROPERTIES 
     LIBRARY_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin/$<CONFIG>"
     ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin/$<CONFIG>")
 else()
-  set_target_properties(common PROPERTIES 
+  set_target_properties(core PROPERTIES 
     LIBRARY_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}"
     ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}")
 endif()
