@@ -12,7 +12,8 @@ target_link_libraries(core PRIVATE opengl32
                            PUBLIC glm::glm 
                            PUBLIC glad 
                            PUBLIC assimp::assimp 
-                           PUBLIC stb)
+                           PUBLIC stb
+                           PUBLIC imgui)
 
 if(CMAKE_CONFIGURATION_TYPES)
   set_target_properties(core PROPERTIES 
