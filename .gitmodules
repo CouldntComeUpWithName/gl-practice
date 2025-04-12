@@ -7,3 +7,6 @@
 [submodule "3rd-party/assimp"]
 	path = 3rd-party/assimp
 	url = https://github.com/assimp/assimp.git
+[submodule "3rd-party/imgui"]
+	path = 3rd-party/imgui
+	url = https://github.com/ocornut/imgui.git
