@@ -62,9 +62,11 @@ void gfx::shader::bind() const
   glUseProgram(program_);
 }
 
-gfx::shader::compile_status gfx::shader::_filepath(const std::filesystem::path &path)
+gfx::shader::compile_status gfx::shader::_filepath(const std::filesystem::path& path)
 {
-  compile_status result;
+  assert(std::filesystem::exists(path) && "file does not exist");
+  
+  compile_status result{};
   
   result.type = detail::get_type(path.extension().string());
 
@@ -82,7 +84,7 @@ gfx::shader::compile_status gfx::shader::_filepath(const std::filesystem::path &
   if(!result.status)
   {
     glGetShaderInfoLog(result.shader, 1024, NULL, infoLog);
-    std::cout << path.filename() << " COMPILATION FAILED: " << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl; 
+    std::cout << path.filename() << "COMPILATION FAILED: " << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl; 
   }
   return result;
 }

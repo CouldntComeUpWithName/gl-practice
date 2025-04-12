@@ -1,8 +1,8 @@
 add_subdirectory(GLFW)
 add_subdirectory(glm)
 add_subdirectory(glad)
-
 add_subdirectory(assimp)
+add_subdirectory(stb)
 
 get_target_list_from(assimp_targets "assimp")
 

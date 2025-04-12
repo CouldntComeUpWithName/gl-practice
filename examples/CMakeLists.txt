@@ -1,6 +1,7 @@
 add_subdirectory(hello-triangle)
 add_subdirectory(cube)
 add_subdirectory(model-loading)
+add_subdirectory(primitives)
 
 get_target_list_from(examples ${CMAKE_CURRENT_SOURCE_DIR})
 

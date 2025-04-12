@@ -16,13 +16,26 @@ public:
 
 public:
   free_camera() = default;
-  free_camera(const glm::vec3& position);
+  free_camera(const glm::vec3& position)
+    : position_{position}
+  {
 
+  }
+  
   void perspective(float fovy, float aspect_ratio, float near, float far)
   {
     type_ = projection_type::perspective;
     fovy_ = fovy_;
     aspect_ratio_ = aspect_ratio;
+    near_ = near;
+    far_ = far;
+  }
+
+  void ortho(float fovy, float aspect, float near = 0.1f, float far = 1000.f)
+  {
+    type_ = projection_type::orthographic;
+    fovy_ = fovy_;
+    aspect_ratio_ = aspect;
     near_ = near;
     far_ = far;
   }
@@ -33,6 +46,8 @@ public:
     {
     case projection_type::perspective:
       return glm::perspective(fovy_, aspect_ratio_, near_, far_);
+    case projection_type::orthographic:
+      return glm::ortho(-1.6f, 1.6f, -0.9f, 0.9f, near_, far_); // wtf
     }
 
     return glm::mat4(1.f);
@@ -88,7 +103,7 @@ private:
   static constexpr glm::vec3 WORLD_UP = { 0.f, 1.f, 0.f };
 
   glm::vec3 position_{};
-  glm::vec3 rotation_{};
+  glm::vec3 rotation_{-90.f, 0.f, 0.f};
 
   float near_ = 0.001f;
   float far_ = 100.f;
@@ -101,7 +116,6 @@ private:
   glm::vec3 front_ = {};
   glm::vec3 right_ = {};
 };
-
 
 struct view_info
 {

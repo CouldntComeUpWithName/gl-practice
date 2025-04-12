@@ -7,3 +7,10 @@ struct simple_vertex
   glm::vec4 color;
   glm::vec2 uv;
 };
+
+struct vertex
+{
+  glm::vec3 position;
+  glm::vec3 normal;
+  glm::vec2 uv;
+};
