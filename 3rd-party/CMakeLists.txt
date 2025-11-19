@@ -31,7 +31,7 @@ set(IMGUI_SOURCES
   "imgui/imstb_truetype")
 
 target_sources(imgui PRIVATE ${IMGUI_SOURCES})
-target_link_directories(imgui PRIVATE glfw PRIVATE opengl32)
+target_link_libraries(imgui PUBLIC glfw PRIVATE opengl32)
 
 foreach(target IN LISTS assimp_targets)
   if(TARGET ${target})

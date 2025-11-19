@@ -15,6 +15,7 @@ struct render_context
 class mesh
 {
 public:
+  mesh() = default;
   mesh(const std::vector<vertex>& v, const std::vector<texture>& t, const std::vector<uint32_t>& indices)
     : vertices_{v}, textures_{t}, indices_{indices}
   { 
@@ -46,4 +47,5 @@ private:
   std::vector<uint32_t> indices_;
 };
 
-mesh make_sphere(uint32_t sector, uint32_t stack);
+mesh make_sphere(uint32_t sector, uint32_t stack); 
+mesh make_surface(uint32_t vwidth, uint32_t vheight);

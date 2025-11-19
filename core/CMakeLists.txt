@@ -1,11 +1,11 @@
-add_library(core)
+add_library(core STATIC)
 
 file(GLOB_RECURSE SOURCES src/**.cpp src/**.cc src/**.cxx)
 file(GLOB_RECURSE HEADERS include/**.h include/**.hpp include/**.inl include/**.hxx)
 
 target_include_directories(core PUBLIC include)
 
-target_sources(core PRIVATE ${HEADERS} PRIVATE ${SOURCES})
+target_sources(core PUBLIC ${HEADERS} PRIVATE ${SOURCES})
 
 target_link_libraries(core PRIVATE opengl32 
                            PUBLIC glfw 

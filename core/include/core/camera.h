@@ -4,11 +4,9 @@
 
 
 //TODO: improve with quats
-struct free_camera
-{
+struct free_camera {
 public:
-  enum class projection_type
-  {
+  enum class projection_type {
     none = 0,
     perspective,
     orthographic,

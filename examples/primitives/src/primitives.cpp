@@ -76,10 +76,10 @@ int main()
     surface.mat3("normal_mat", glm::transpose(glm::inverse(model_mat)));
 
     surface.vec3("light_pos", light_pos);
-
-    glBindTextureUnit((int)texture.type, texture.id);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    //glBindTextureUnit((int)texture.type, texture.id);
     
-    surface.set_int("albedo", (int)texture.type);
+    //surface.set_int("albedo", texture.id);
     
     sphere.draw();
 

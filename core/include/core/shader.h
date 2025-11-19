@@ -58,7 +58,6 @@ namespace gfx
 
       auto linkage_status = _link_program();
       
-
       for(auto& stage : results)
         _cleanup(stage.shader);
     }

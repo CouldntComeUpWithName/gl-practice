@@ -2,6 +2,9 @@ add_subdirectory(hello-triangle)
 add_subdirectory(cube)
 add_subdirectory(model-loading)
 add_subdirectory(primitives)
+add_subdirectory(scene)
+add_subdirectory(heightmap)
+add_subdirectory(fft-water-simulation)
 
 get_target_list_from(examples ${CMAKE_CURRENT_SOURCE_DIR})
 

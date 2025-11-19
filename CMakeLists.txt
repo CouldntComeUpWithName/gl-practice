@@ -24,7 +24,6 @@ add_subdirectory(3rd-party)
 add_subdirectory(tools)
 add_subdirectory(tests)
 
-
 file(GLOB_RECURSE RESOURCES res/*)
 add_custom_target(res SOURCES ${RESOURCES})
 

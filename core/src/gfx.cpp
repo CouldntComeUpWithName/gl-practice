@@ -6,7 +6,6 @@
 #include <iostream>
 #include <filesystem>
 
-// temp
 #include <unordered_map>
 
 std::unordered_map<std::filesystem::path, uint32_t> texture_cache;
@@ -17,8 +16,6 @@ texture load_texture(const std::filesystem::path& filepath, const texture_type t
   {
     return texture{ it->second, type };
   }
-  
-  //stbi_set_flip_vertically_on_load(true);
   
   int width, height, channels;
   uint8_t* data = stbi_load(filepath.string().c_str(), &width, &height, &channels, 0);
@@ -62,4 +59,18 @@ texture load_texture(const std::filesystem::path& filepath, const texture_type t
   texture_cache.emplace(std::pair{filepath, texture.id});
 
   return texture;
+}
+
+texture texture_from_image(const image& image)
+{
+  // TODO: implement the function
+  return texture();
+}
+
+image load_image(const std::filesystem::path &filepath)
+{
+  int width, height, channels;
+  uint8_t* data = stbi_load(filepath.string().c_str(), &width, &height, &channels, 0);
+  
+  return { data, width, height, channels };
 }

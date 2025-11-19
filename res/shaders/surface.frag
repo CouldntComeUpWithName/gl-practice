@@ -12,11 +12,9 @@ uniform sampler2D specular;
 
 uniform vec3 light_pos;
 
-in mat4 nmat;
-
 void main()
 {
-  float ambient_strength = 0.1;
+  float ambient_strength = 0.3;
   
   vec3 ambient = vec3(1.0, 1.0, 1.0) * ambient_strength;
 

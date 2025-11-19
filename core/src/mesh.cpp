@@ -29,7 +29,6 @@ void mesh::draw(gfx::shader& shader)
       shader.set_int("specular", (int)texture.type);
     }
   }
-  
   glBindVertexArray(rcontext_.vao);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, rcontext_.ebo);
   glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices_.size()), GL_UNSIGNED_INT, 0);
@@ -116,3 +115,25 @@ mesh make_sphere(uint32_t sector, uint32_t stack)
   
   return mesh(std::move(vertices), {}, std::move(indices));
 }
+
+mesh make_surface(uint32_t vwidth, uint32_t vheight)
+{
+  std::vector<vertex> vertices;
+
+  for (uint32_t j = 0u; j < vheight; j++)
+  {
+    for (uint32_t i = 0u; i < vwidth; i++)
+    {
+      vertices.emplace_back() = vertex{
+        .position = {i, j, 0.f},
+        .normal = {},
+        .uv = {(float)i / vwidth, (float)j / vheight}
+      };
+    }
+  }
+
+
+  return mesh();
+}
+
+

@@ -64,7 +64,10 @@ void gfx::shader::bind() const
 
 gfx::shader::compile_status gfx::shader::_filepath(const std::filesystem::path& path)
 {
-  assert(std::filesystem::exists(path) && "file does not exist");
+  if (!std::filesystem::exists(path))
+  {
+    std::cout << "file does not exist\n";
+  }
   
   compile_status result{};
   

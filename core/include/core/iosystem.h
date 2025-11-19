@@ -9,7 +9,7 @@ namespace io
   
   inline std::string read_binary(const std::filesystem::path& path)
   {
-    static constexpr openmode std_input_binary = 1 | 32; // std::ios::in | std::ios::binary
+    constexpr openmode std_input_binary = 1 | 32; // std::ios::in | std::ios::binary
     return read_file(path, std_input_binary);
   }
 

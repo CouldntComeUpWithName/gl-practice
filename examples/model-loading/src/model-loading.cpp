@@ -1,5 +1,6 @@
 #include <cstdint>
 #include <iostream>
+#include <chrono>
 #include <filesystem>
 #include <thread>
 
@@ -16,8 +17,8 @@ constexpr auto SCREEN_HEIGHT = 720;
 void update_mouse(GLFWwindow* window, free_camera& camera, float dt)
 {
   double x, y;
-  glfwGetCursorPos(window, &x, &y);
   
+  glfwGetCursorPos(window, &x, &y);
   static float sensitivity = 0.2f;
 
   static float last_x = static_cast<float>(x);
@@ -30,7 +31,6 @@ void update_mouse(GLFWwindow* window, free_camera& camera, float dt)
   last_y = static_cast<float>(y);
 
   glm::vec3 rotation = camera.rotation();
-
   rotation.x += xoffset * sensitivity;
   rotation.y += yoffset * sensitivity;
 
@@ -48,7 +48,7 @@ void update_mouse(GLFWwindow* window, free_camera& camera, float dt)
 
 void update_keys(GLFWwindow* window, free_camera& camera, float dt)
 {
-  float static velocity = 4.f;
+  float static velocity = 40.f;
 
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
   glfwSetWindowShouldClose(window, true);
@@ -61,7 +61,6 @@ void update_keys(GLFWwindow* window, free_camera& camera, float dt)
     camera.position(camera.position() - (camera.right() * velocity * dt));
   if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
     camera.position(camera.position() + (camera.right() * velocity * dt));
-
 }
 
 int main()
@@ -82,26 +81,29 @@ int main()
   {
     return -1;
   }
-  
   glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
   glEnable(GL_DEPTH_TEST);
-
   // create uniform buffer
   uint32_t ubuffer{};
   glCreateBuffers(1, &ubuffer);
   glNamedBufferData(ubuffer, static_cast<uint32_t>(sizeof(view_info)), nullptr, GL_DYNAMIC_DRAW);
   glBindBufferBase(GL_UNIFORM_BUFFER, 0u, ubuffer);
-
+  
   free_camera camera;
   camera.perspective(45.f, SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 1000.f);
   
   glfwSwapInterval(0);
-
   gfx::shader model_shader;
   model_shader.load("../../res/shaders/surface.vert", "../../res/shaders/surface.frag");
   
-  model model("../../res/models/ak-47/scene.gltf");
+  auto start = std::chrono::steady_clock::now();
+  model model("E:\\3D\\prehistoric_planet_trex\\scene.gltf");
+  
+  auto end = std::chrono::steady_clock::now();
+  
+  std::cout << "Asset loading took: " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start) << std::endl;
+  
   float angle_accum{ 0.f };
   
   while (!glfwWindowShouldClose(window))

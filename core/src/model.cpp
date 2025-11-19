@@ -12,7 +12,7 @@ void model::load(const std::filesystem::path &path)
 {
   Assimp::Importer importer;
   const aiScene* scene = importer.ReadFile(path.string(), aiProcess_Triangulate | aiProcess_FlipUVs);
-
+  
   if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
   {
     std::cout << "Couldn\'t load a model at " << path << " reason: " << importer.GetErrorString() << '\n';
@@ -56,7 +56,7 @@ mesh model::_process_mesh(aiMesh *msh, const aiScene *scene, const std::filesyst
   std::vector<vertex>  vertices;
   std::vector<texture> textures;
   std::vector<uint32_t> indices;
-
+  
   vertices.reserve(msh->mNumVertices);
 
   for(int i = 0; i < msh->mNumVertices; i++)
@@ -111,7 +111,7 @@ mesh model::_process_mesh(aiMesh *msh, const aiScene *scene, const std::filesyst
       textures.emplace_back(load_texture(texture_path, type));
     }
   };
-
+  
   load_material_textures(material, aiTextureType_DIFFUSE, texture_type::albedo);
   load_material_textures(material, aiTextureType_SPECULAR, texture_type::specular);
   load_material_textures(material, aiTextureType_HEIGHT, texture_type::normal);

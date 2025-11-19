@@ -1,6 +1,5 @@
 #pragma once
 #include <cstdint>
-#include <string>
 
 namespace std::filesystem {
   class path;
@@ -18,4 +17,15 @@ struct texture {
   texture_type type;
 };
 
+struct image {
+  uint8_t* data;
+  int width;
+  int height;
+  int channels;
+};
+
 texture load_texture(const std::filesystem::path& filepath, const texture_type type = texture_type::albedo);
+
+texture texture_from_image(const image& image);
+
+image load_image(const std::filesystem::path& filepath);
